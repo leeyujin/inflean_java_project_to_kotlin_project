@@ -28,7 +28,7 @@ class UserService(
 //            .map { UserResponse(it) }
                 // 생성자 호출방식
 //            .map( ::UserResponse )
-            .map { user -> UserResponse(user) }
+            .map { user -> UserResponse.of(user) }
     }
 
     @Transactional
