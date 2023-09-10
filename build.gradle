@@ -5,7 +5,8 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.6.21'
     id 'org.jetbrains.kotlin.plugin.jpa' version '1.6.21'
     id 'org.jetbrains.kotlin.plugin.spring' version '1.6.21'
-    id 'org.jetbrains.kotlin.kapt' version '1.6.21'
+    id 'org.jetbrains.kotlin.kapt' version '1.6.21' // querydsl
+    id 'org.jetbrains.kotlin.plugin.allopen' version '1.6.21'
 }
 
 group = 'com.group'
@@ -44,4 +45,11 @@ compileTestKotlin {
     kotlinOptions {
         jvmTarget = "11"
     }
+}
+
+// 프록시 제대로 활용하려면, 객체가 open되어야있어야함.
+allOpen {
+    annotation("javax.persistence.Entity")
+    annotation("javax.persistence.MappedSuperclass")
+    annotation("javax.persistence.Embeddable")
 }
